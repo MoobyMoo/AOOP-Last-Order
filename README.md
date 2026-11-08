@@ -18,7 +18,7 @@ AOOP 2026 Fall 第 1 組期末專題。以 Godot 與 GDScript 製作動作遊戲
 - [組員資料來源](docs/team.md)
 - 截止時間：2026 年 11 月 16 日星期一 23:59，由組長繳交。
 - 繳交檔名：`AOOP_Final_Project_Proposal_第1組.pdf`，內容須附公開 Repo 連結。
-- Repo：https://github.com/MoobyMoo/AOOP_Final_Project_Group_1
+- Repo：https://github.com/MoobyMoo/AOOP_Final_Project_Group_1/
 
 提案已套用助教提供的 Word 範本，包含系統架構圖與組員分工。繳交前由組內確認內容與繳交人。
 

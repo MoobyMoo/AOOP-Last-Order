@@ -6,7 +6,7 @@ AOOP_Final_Project_Group_1
 
 第 1 組：劉育麟 112511002、張倖嘉 112511004、譚羽良 112511017。
 
-公開 Repo：https://github.com/MoobyMoo/AOOP_Final_Project_Group_1
+公開 Repo：https://github.com/MoobyMoo/AOOP_Final_Project_Group_1/
 
 正式提案請使用 [PDF](AOOP_Final_Project_Proposal_第1組.pdf) 或 [可編輯 Word](AOOP_Final_Project_Proposal_第1組.docx)。
 

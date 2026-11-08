@@ -148,7 +148,7 @@ def main():
     link_para = paragraph("")
     link = etree.SubElement(link_para, tag("hyperlink"))
     link.set(f"{{{R}}}id", "rIdAOOPRepository")
-    link.append(run("https://github.com/MoobyMoo/AOOP_Final_Project_Group_1"))
+    link.append(run("https://github.com/MoobyMoo/AOOP_Final_Project_Group_1/"))
     body.append(link_para)
     body.append(paragraph(
         "Repo 已公開。目前收錄提案與組員資料，後續加入可公開的課程程式與操作說明。"
@@ -160,7 +160,7 @@ def main():
     package_ns = "http://schemas.openxmlformats.org/package/2006/relationships"
     for attrs in [
         {"Id": "rIdAOOPArchitecture", "Type": R + "/image", "Target": "media/aoop-architecture.png"},
-        {"Id": "rIdAOOPRepository", "Type": R + "/hyperlink", "Target": "https://github.com/MoobyMoo/AOOP_Final_Project_Group_1", "TargetMode": "External"},
+        {"Id": "rIdAOOPRepository", "Type": R + "/hyperlink", "Target": "https://github.com/MoobyMoo/AOOP_Final_Project_Group_1/", "TargetMode": "External"},
     ]:
         etree.SubElement(rels, f"{{{package_ns}}}Relationship", **attrs)
     types = etree.fromstring(original["[Content_Types].xml"])
