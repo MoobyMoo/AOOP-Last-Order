@@ -1,4 +1,4 @@
-# AOOP 第 1 組期末專題提案草稿
+# AOOP 第 1 組期末專題提案補充說明
 
 ## 專題名稱與組員
 
@@ -8,7 +8,7 @@
 
 公開 Repo：https://github.com/MoobyMoo/AOOP-Last-Order
 
-本文件為內容草稿。尚未取得公告所附的 Word 範本，取得後須核對欄位、頁數與版面，再輸出 `AOOP_Final_Project_Proposal_第1組.pdf`。以下規模與分工是建議方案，尚未代表三位組員已同意或完成。
+正式提案已依官方範本製作，請使用 [PDF](AOOP_Final_Project_Proposal_第1組.pdf) 或 [可編輯 Word](AOOP_Final_Project_Proposal_第1組.docx)。本頁保留範圍、技術依據與驗收計畫，作為組內補充說明。分工已依組內要求指定，未表示工作已完成。
 
 ## 一 專題動機與目標
 
@@ -53,6 +53,8 @@ flowchart TD
     Input --> HUD[介面 hud.gd]
     Combat --> Events[戰鬥事件與狀態]
     Events --> HUD
+    Events --> Audio[SFX 與音效播放 Jasper]
+    HUD --> Audio
 ```
 
 | 模組 | 責任與物件關係 | 檢查到的依據 |
@@ -61,7 +63,8 @@ flowchart TD
 | 戰鬥模擬 | 管理生命值、命中與戰鬥狀態，持有一個 Encounter 物件 | `combat.gd` 繼承 `RefCounted`，有 `step`、`select_encounter` 與 `use_encounter` |
 | Boss 行為 | 描述特定 Boss 的階段、動作與接觸資訊，供戰鬥模擬使用 | Tung 與 Tralalero Encounter 均繼承 `RefCounted`，有 `reset`、`step_boss` 與 `step_defeat` |
 | 進度與儲存 | 管理通關資料、存檔版本與讀寫結果 | `progression.gd` 繼承 `RefCounted`，有 `load_state`、`save_state` 與 `skin_unlocked` 訊號 |
-| 介面 | 呈現血量、提示、選單與結果 | `hud.gd` 繼承 `Control` |
+| 介面與選單 Michelle | 呈現血量、提示、主選單、暫停、設定及勝敗畫面 | `hud.gd` 繼承 `Control`，課程工作整理畫面與操作邏輯 |
+| 音效 Jasper | 依事件播放 SFX，管理音量、優先序與重試清理 | `audio_director.gd` 繼承 `Node`，有 `play_event`、`set_mix` 與 `stop_all` |
 
 物件導向的展示重點如下：
 
@@ -73,15 +76,15 @@ flowchart TD
 
 Godot 官方的場景組織文件建議讓物件各自負責明確功能並降低耦合，因此本案以既有模組分工與可替換行為為架構基礎。官方 GDScript 文件確認語言支援物件導向、繼承與訊號，這些機制足以支撐上述課程展示。
 
-## 五 建議分工
+## 五 成員分工
 
-下表僅為討論起點。每人需親自完成可辨識的程式與驗證工作，不以美術整理或報告撰寫作為唯一貢獻。
+分工已依譚羽良的指示指定。每人負責模組程式、整合與驗證，並以自己的帳號提交實質修改。
 
-| 組員 | 建議工作 | 驗收證據 |
+| 組員 | 負責工作 | 驗收證據 |
 | --- | --- | --- |
-| 劉育麟 | Boss 行為與階段流程、第二種 Encounter 的共用約定檢查 | 兩種 Boss 差異展示、行為驗證與 PR |
-| 張倖嘉 | 進度與存檔、選單與勝敗介面整合 | 儲存載入與損壞資料案例、重試流程與 PR |
-| 譚羽良 | 共用戰鬥流程、模組介面整理與整合 | 命中與閃避規則、可重現執行說明與整合 PR |
+| 劉育麟 Jasper | 音效與播放系統：攻擊、命中、受傷、閃避、Boss 提示與 UI 回饋；事件對應、音量設定、播放優先序及重試清理 | 音效事件對照、音量／暫停／重試驗證與 PR |
+| 張倖嘉 Michelle | UI 與選單：主選單、暫停、設定、HUD、勝利／失敗畫面；按鈕事件、畫面切換與音量控制介面 | 完整選單操作、狀態同步、重試流程與 PR |
+| 譚羽良 | 玩家與 Boss 戰鬥、進度存檔、模組事件介面與整合 | 命中與閃避規則、存檔驗證、可重現執行說明與整合 PR |
 
 三人共同檢查架構圖、示範腳本與報告。既有程式的作者與歷史保持原樣，不追溯替他人建立貢獻。
 
@@ -121,4 +124,4 @@ Godot 官方的場景組織文件建議讓物件各自負責明確功能並降�
 - [Godot 官方場景組織文件](https://docs.godotengine.org/en/stable/tutorials/best_practices/scene_organization.html)。官方網站本次回傳 403，實際核對的是[官方文件原始碼](https://github.com/godotengine/godot-docs/blob/master/tutorials/best_practices/scene_organization.rst)。
 - [Godot 官方 GDScript 文件](https://github.com/godotengine/godot-docs/blob/master/tutorials/scripting/gdscript/gdscript_basics.rst)。
 
-待補：公告所附的官方 Word 範本、組長／繳交人、組員對分工與最低展示範圍的確認。原始碼與資產的匯入另行安排，不因本提案自動恢復遊戲開發。
+官方 Word 範本已保留於 `templates/`，正式文件保留其章節、字級與頁面設定。待組內確認組長／繳交人與最低展示範圍。原始碼與資產的匯入另行安排，不因本提案自動恢復遊戲開發。

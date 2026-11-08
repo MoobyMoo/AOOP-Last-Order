@@ -14,13 +14,21 @@ AOOP 2026 Fall 第 1 組期末專題。以 Godot 與 GDScript 製作第三人稱
 
 ## 提案與繳交
 
-- [期末專題提案草稿](docs/proposal.md)
+- [期末專題提案 PDF](docs/AOOP_Final_Project_Proposal_第1組.pdf)
+- [可編輯 Word 提案](docs/AOOP_Final_Project_Proposal_第1組.docx)
+- [提案補充說明](docs/proposal.md)
 - [組員資料來源](docs/team.md)
 - 截止時間：2026 年 11 月 16 日星期一 23:59，由組長繳交。
 - 繳交檔名：`AOOP_Final_Project_Proposal_第1組.pdf`，內容須附公開 Repo 連結。
 - Repo：https://github.com/MoobyMoo/AOOP-Last-Order
 
-草稿尚未套用助教提供的 Word 範本，不能視為已完成格式核對的繳交版 PDF。
+提案已套用助教提供的 Word 範本，包含系統架構圖與組員分工。繳交前由組內確認內容與繳交人。
+
+## 分工
+
+- 張倖嘉 Michelle：UI 與選單，包含主選單、暫停、設定、HUD 與勝敗畫面。
+- 劉育麟 Jasper：SFX 與音效播放，包含事件觸發、音量設定、優先序及暫停／重試處理。
+- 譚羽良：玩家與 Boss 戰鬥、進度存檔及整合。
 
 ## 專案狀態
 

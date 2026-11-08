@@ -1,0 +1,19 @@
+digraph architecture {
+  graph [rankdir=TB, bgcolor="white", pad="0.15", nodesep="0.25", ranksep="0.35"];
+  node [shape=box, fontname="Noto Sans CJK TC", fontsize=12, margin="0.13,0.08", color="#333333"];
+  edge [color="#555555", arrowsize=0.7];
+  main [label="場景與流程控制\nmain.gd"];
+  combat [label="戰鬥模擬\nCombat"];
+  progress [label="進度與存檔\nProgression"];
+  ui [label="UI 與選單\nMichelle"];
+  encounter [label="Boss 行為物件\nTung / Tralalero"];
+  audio [label="SFX 與播放\nJasper / AudioDirector"];
+  main -> combat;
+  main -> progress;
+  main -> ui;
+  combat -> encounter;
+  combat -> audio;
+  ui -> audio;
+  {rank=same; combat; progress; ui;}
+  {rank=same; encounter; audio;}
+}
