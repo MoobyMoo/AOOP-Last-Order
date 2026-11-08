@@ -86,25 +86,25 @@ def main():
     for item in list(body):
         body.remove(item)
 
-    body.append(heading(0, "專題名稱：Cappuccino Assassino: Last Order"))
+    body.append(heading(0, "專題名稱：Last Order"))
     body.append(heading(1, "小組成員：第 1 組"))
     body.append(paragraph("劉育麟 112511002　張倖嘉 112511004　譚羽良 112511017"))
     body.append(heading(2, "專題動機與目標"))
     body.append(paragraph(
-        "我們希望製作一款第三人稱動作遊戲，讓玩家透過觀察 Boss 的攻擊前兆，"
-        "掌握移動、閃避與反擊時機。玩家扮演人類劍士，Cappuccino Assassino 是故事中的宿敵。"
+        "我們希望製作一款動作遊戲，結合角色操作、遊戲互動與視聽回饋，提供完整的遊玩體驗。"
+        "透過遊戲開發，練習物件導向的設計與團隊協作。"
     ))
     body.append(paragraph(
-        "本專題採用 Godot 與 GDScript，以既有個人原型為基礎，整理戰鬥、介面與音效的物件責任。"
-        "課程成果將展示可替換的 Boss 行為、獨立的 UI 與音效模組，以及能完整遊玩的展示流程。"
+        "本專題採用 Godot 與 GDScript，以既有個人原型為基礎，將遊戲功能劃分為不同模組，"
+        "使程式便於維護與後續擴充。"
         "既有程式與課程期間新增的工作分別記錄，本專題僅用於 AOOP 課程繳交。"
     ))
     body.append(heading(3, "核心功能與範圍"))
     for text in [
-        "戰鬥與 Boss：玩家移動、攻擊與閃避；目標以兩種 Boss 行為展示共用戰鬥流程。",
-        "UI 與選單：主選單、暫停、設定、生命值 HUD、勝利／失敗畫面與重試操作。",
-        "音效系統：攻擊、命中、受傷、閃避、Boss 提示及選單回饋，並提供音量控制。",
-        "進度與整合：儲存通關紀錄，串接選單、探索區、Boss 戰與結果畫面。",
+        "遊戲邏輯：處理角色操作、遊戲互動與流程控制。",
+        "介面與選單：提供遊戲資訊顯示與操作介面。",
+        "音效系統：配合遊戲事件提供聲音回饋。",
+        "資料管理：管理遊戲設定與進度資料。",
     ]:
         body.append(paragraph(text))
     body.append(heading(4, "系統架構與程式骨幹"))
@@ -120,31 +120,24 @@ def main():
     drawing = deepcopy(image_run._r.find(tag("drawing")))
     drawing.xpath(".//*[local-name()='blip']")[0].set(f"{{{R}}}embed", "rIdAOOPArchitecture")
     docpr = drawing.xpath(".//*[local-name()='docPr']")[0]
-    docpr.set("descr", "場景控制協調戰鬥、進度、UI與選單；戰鬥使用Boss行為物件；戰鬥與UI將事件送至音效模組。")
+    docpr.set("descr", "遊戲系統分為遊戲邏輯、介面與選單、音效系統及資料管理四個主要模組。")
     diagram = paragraph("", keep=True)
     etree.SubElement(diagram, tag("r")).append(drawing)
     body.append(diagram)
-    body.append(paragraph("圖 1　模組關係草案。箭頭表示呼叫或事件傳遞方向。"))
+    body.append(paragraph("圖 1　遊戲系統與主要模組。"))
     body.append(heading(6, "物件導向設計說明："))
     for text in [
-        "封裝與責任劃分：Combat 管理生命值、命中與戰鬥流程；Progression 管理通關與存檔；"
-        "UI 模組處理畫面與操作；AudioDirector 管理音效事件與播放。",
-        "組合與多型：Combat 持有 Encounter 行為物件，透過 definition、reset、step_boss 等共用方法"
-        "使用不同 Boss。新增 Boss 時實作相同約定，並檢查必要方法與資料格式。",
-        "繼承與事件：場景與 UI 使用 Node3D、Control，戰鬥資料使用 RefCounted；"
-        "以訊號或明確的事件入口通知介面與音效，減少不同模組直接修改彼此狀態。",
-        "可維護性：UI 與音效共用設定介面，按鈕調整音量後由播放系統套用。"
-        "分別驗證畫面切換、音效事件、暫停與重試，避免一項修改破壞整段遊戲流程。",
+        "封裝：各類別管理自己的資料與行為，透過明確的介面與其他物件互動。",
+        "繼承與多型：將相近物件的共用行為抽出，讓不同物件可在相同的使用方式下呈現各自的行為。",
+        "模組合作：遊戲邏輯、介面、音效與資料管理各自負責不同功能，透過事件或方法交換資訊，"
+        "降低彼此依賴，方便分工與擴充。",
     ]:
         body.append(paragraph(text))
-    body.append(heading(7, "成員分工", page_break=True))
+    body.append(heading(7, "成員分工"))
     for text in [
-        "張倖嘉 Michelle／112511004：UI 與選單。負責主選單、暫停、設定、HUD、勝敗畫面；"
-        "撰寫按鈕事件、畫面切換與設定控制程式，驗證顯示同步及重試流程。",
-        "劉育麟 Jasper／112511002：SFX 與音效播放。整理音效來源與授權，建立事件對照，"
-        "實作播放觸發、音量與優先序；處理暫停、重複觸發及重試時的清理，並驗證提示時機。",
-        "譚羽良／112511017：玩家與 Boss 戰鬥、進度存檔及整合。定義模組事件與資料介面，"
-        "協助 UI、音效接入戰鬥，負責可重現的展示版本與整合驗證。",
+        "張倖嘉 Michelle／112511004：UI 與選單的設計、實作與整合。",
+        "劉育麟 Jasper／112511002：SFX 音效的整理、播放功能與整合。",
+        "譚羽良／112511017：遊戲操作、戰鬥邏輯與系統整合。",
     ]:
         body.append(paragraph(text))
     body.append(paragraph(
@@ -195,7 +188,7 @@ def main():
         final_text = "".join(etree.fromstring(final.read("word/document.xml")).xpath(".//w:t/text()", namespaces=NS))
         for forbidden in ["簡述為什麼", "請附上", "請簡述", "務必注意", "1112511004"]:
             assert forbidden not in final_text, forbidden
-        for required in ["112511002", "112511004", "112511017", "Michelle", "Jasper", "SFX", "主選單", "暫停", "Godot", "GDScript"]:
+        for required in ["112511002", "112511004", "112511017", "Michelle", "Jasper", "SFX", "介面與選單", "Godot", "GDScript"]:
             assert required in final_text, required
     report = {"reference_sha256": sha256(REFERENCE.read_bytes()).hexdigest(),
               "output_sha256": sha256(OUTPUT.read_bytes()).hexdigest(),

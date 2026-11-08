@@ -1,8 +1,6 @@
-# Cappuccino Assassino: Last Order
+# Last Order
 
-AOOP 2026 Fall 第 1 組期末專題。以 Godot 與 GDScript 製作第三人稱動作遊戲，透過戰鬥模擬、Boss 行為、進度儲存與介面模組呈現物件導向設計。
-
-玩家是自訂的人類劍士，也是組織最後的劍士。Cappuccino Assassino 是 Boss／宿敵；遊戲名稱沿用 Cappuccino Assassino: Last Order。
+AOOP 2026 Fall 第 1 組期末專題。以 Godot 與 GDScript 製作動作遊戲，透過遊戲邏輯、介面、音效與資料管理練習物件導向設計。
 
 ## 組員
 
@@ -26,9 +24,9 @@ AOOP 2026 Fall 第 1 組期末專題。以 Godot 與 GDScript 製作第三人稱
 
 ## 分工
 
-- 張倖嘉 Michelle：UI 與選單，包含主選單、暫停、設定、HUD 與勝敗畫面。
-- 劉育麟 Jasper：SFX 與音效播放，包含事件觸發、音量設定、優先序及暫停／重試處理。
-- 譚羽良：玩家與 Boss 戰鬥、進度存檔及整合。
+- 張倖嘉 Michelle：UI 與選單的設計、實作與整合。
+- 劉育麟 Jasper：SFX 音效的整理、播放功能與整合。
+- 譚羽良：遊戲操作、戰鬥邏輯與系統整合。
 
 ## 專案狀態
 
