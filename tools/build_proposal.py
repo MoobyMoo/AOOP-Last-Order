@@ -86,7 +86,7 @@ def main():
     for item in list(body):
         body.remove(item)
 
-    body.append(heading(0, "專題名稱：Last Order"))
+    body.append(heading(0, "專題名稱：AOOP_Final_Project_Group_1"))
     body.append(heading(1, "小組成員：第 1 組"))
     body.append(paragraph("劉育麟 112511002　張倖嘉 112511004　譚羽良 112511017"))
     body.append(heading(2, "專題動機與目標"))
@@ -148,7 +148,7 @@ def main():
     link_para = paragraph("")
     link = etree.SubElement(link_para, tag("hyperlink"))
     link.set(f"{{{R}}}id", "rIdAOOPRepository")
-    link.append(run("https://github.com/MoobyMoo/AOOP-Last-Order"))
+    link.append(run("https://github.com/MoobyMoo/AOOP_Final_Project_Group_1"))
     body.append(link_para)
     body.append(paragraph(
         "Repo 已公開。目前收錄提案與組員資料，後續加入可公開的課程程式與操作說明。"
@@ -160,7 +160,7 @@ def main():
     package_ns = "http://schemas.openxmlformats.org/package/2006/relationships"
     for attrs in [
         {"Id": "rIdAOOPArchitecture", "Type": R + "/image", "Target": "media/aoop-architecture.png"},
-        {"Id": "rIdAOOPRepository", "Type": R + "/hyperlink", "Target": "https://github.com/MoobyMoo/AOOP-Last-Order", "TargetMode": "External"},
+        {"Id": "rIdAOOPRepository", "Type": R + "/hyperlink", "Target": "https://github.com/MoobyMoo/AOOP_Final_Project_Group_1", "TargetMode": "External"},
     ]:
         etree.SubElement(rels, f"{{{package_ns}}}Relationship", **attrs)
     types = etree.fromstring(original["[Content_Types].xml"])
